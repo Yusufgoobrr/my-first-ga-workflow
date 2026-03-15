@@ -13,8 +13,8 @@ jobs:
         run: echo "amigoscode"
       - name: Send Slack Notification
         run: >
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"ECHOOOO ✅"}'\
-          ${{env.SLACK_CHANNEL_WEBHOOK}}
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"ECHOOOO ✅"}'
+          ${{ env.SLACK_CHANNEL_WEBHOOK }}
       - name: JDK
         uses: actions/setup-java@v5
         with:
