@@ -10,7 +10,7 @@ jobs:
       - name: Test
         run: echo "amigoscode"
       - name: JDK
-        uses: actions/setup-java
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '21'
