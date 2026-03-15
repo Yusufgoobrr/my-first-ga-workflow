@@ -6,13 +6,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+     SLACK_CHANNEL_WEBHOOK: ${{secrets.SLACK_CHANNEL_WEBHOOK}}
     steps:
       - name: Test
         run: echo "amigoscode"
+      - name: Send Slack Notification
+        run: >
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"ECHOOOO ✅"}'\
+          ${{env.SLACK_CHANNEL_WEBHOOK}}
       - name: JDK
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '21'
-      - name: Maven Clean Verify
-        run: mvn -B -ntp clean verify 
