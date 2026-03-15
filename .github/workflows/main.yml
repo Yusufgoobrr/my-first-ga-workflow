@@ -1,27 +1,18 @@
-name: My First WorkFlow
+name: Build WorkFlow
 on:
-  push:
+  pull_request:
     branches:
       - main
-      
 jobs:
-  myFirstJob:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - name: My First Step
-      run: printenv
-    - name: My Second Step
-      run: |
-            echo "Amigoscode"
-            echo "Hello" > file.txt
-            ls
-    - name: My Third Step
-      run: sleep 20
-      
-    - name: My First Action
-      uses: actions/checkout@v6
-    
-    - name: ls repository
-      run: |
-        ls 
-      
+      - name: Test
+        run: echo "amigoscode"
+      - name: JDK
+        uses: actions/setup-java
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - name: Maven Clean Verify
+        run: mvn -B -ntp clean verify 
