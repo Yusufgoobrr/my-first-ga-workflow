@@ -17,3 +17,11 @@ jobs:
             ls
     - name: My Third Step
       run: sleep 20
+      
+    - name: My First Action
+      uses: actions/checkout@v6
+    
+    - name: ls repository
+      run: |
+        ls 
+      
